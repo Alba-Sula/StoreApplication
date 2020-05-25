@@ -1,0 +1,33 @@
+﻿@model IEnumerable<StoreApplication.Models.Store.Product>
+@{
+    ViewBag.Title = "List";
+}
+
+    @foreach (var item in Model)
+    {
+        <div class="well">
+            @if (item.ImageData != null)
+            {
+                <div class="pull-left" style="margin-right: 10px">
+                    <img class="img-thumbnail" width="75" height="75"
+                         src="" />
+                    @*@Url.Action("GetImage", "Product",
+                                    new { item.ProductID })*@
+                </div>
+            }
+            <h3>
+                <strong>@item.ProductName</strong>
+                <span class="pull-right label label-primary">@item.Price.ToString("c")</span>
+            </h3>
+
+            @using (Html.BeginForm("AddToCart", "Cart"))
+            {
+                <div class="pull-right">
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-success" value="Add to cart" />
+                </div>
+            }
+            <span class="lead">@item.ProductDescription</span>
+        </div> 
+    }
+

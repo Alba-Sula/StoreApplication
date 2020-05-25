@@ -1,0 +1,16 @@
+﻿======================Store================
+Enable-Migrations -ContextTypeName StoreContext -MigrationsDirectory Migrations\Store
+
+add-migration -ConfigurationTypeName StoreApplication.Migrations.Store.Configuration "InitialCreate"
+
+update-database -ConfigurationTypeName StoreApplication.Migrations.Store.Configuration
+
+======================ApplicationDbContext=====================
+
+Enable-Migrations -ContextTypeName ApplicationDbContext -MigrationsDirectory Migrations\Identity
+
+add-migration -ConfigurationTypeName StoreApplication.Migrations.Identity.Configuration "InitialIdentity"
+
+update-database -ConfigurationTypeName StoreApplication.Migrations.Identity.Configuration
+
+
